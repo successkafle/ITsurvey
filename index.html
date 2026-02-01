@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hey You ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      max-width: 420px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      animation: pop 1s ease;
+    }
+    h1 {
+      color: #ff4d6d;
+      margin-bottom: 10px;
+    }
+    p {
+      color: #555;
+      font-size: 18px;
+    }
+    .buttons {
+      margin-top: 25px;
+    }
+    button {
+      border: none;
+      padding: 12px 22px;
+      font-size: 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    .yes {
+      background: #ff4d6d;
+      color: white;
+    }
+    .yes:hover {
+      transform: scale(1.1);
+    }
+    .no {
+      background: #ddd;
+      margin-left: 10px;
+      position: absolute;
+    }
+    .hidden {
+      display: none;
+    }
+    @keyframes pop {
+      from { transform: scale(0.5); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    .hearts span {
+      position: absolute;
+      color: rgba(255,255,255,0.7);
+      font-size: 20px;
+      animation: float 6s linear infinite;
+    }
+    @keyframes float {
+      from { transform: translateY(100vh); }
+      to { transform: translateY(-10vh); }
+    }
+  </style>
+</head>
+<body>
+
+<div class="hearts"></div>
+
+<div class="card" id="card">
+  <h1>Hey Kanchu ❤️</h1>
+  <p>I was thinking… life is sweeter with you in it.</p>
+  <p>So I have just one important question 👀</p>
+
+  <h2>Smriti, will you be my Valentine? 💌</h2>
+
+  <div class="buttons">
+    <button class="yes" onclick="sayYes()">YES 💕</button>
+    <button class="no" id="noBtn" onmouseover="moveNo()">No 🙃</button>
+  </div>
+</div>
+
+<div class="card hidden" id="yesCard">
+  <h1>YAYYYY 🥰</h1>
+  <p>You just made me the happiest person alive.</p>
+  <p>I can't wait to make memories with you ❤️</p>
+  <p>Happy Valentine's Day 💖</p>
+</div>
+
+<script>
+  const noBtn = document.getElementById('noBtn');
+
+  function moveNo() {
+    const x = Math.random() * (window.innerWidth - 100);
+    const y = Math.random() * (window.innerHeight - 50);
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+  }
+
+  function sayYes() {
+    document.getElementById('card').classList.add('hidden');
+    document.getElementById('yesCard').classList.remove('hidden');
+  }
+
+  const heartsContainer = document.querySelector('.hearts');
+  for (let i = 0; i < 25; i++) {
+    const heart = document.createElement('span');
+    heart.innerHTML = '❤️';
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDelay = Math.random() * 6 + 's';
+    heart.style.fontSize = 16 + Math.random() * 24 + 'px';
+    heartsContainer.appendChild(heart);
+  }
+</script>
+
+</body>
+</html>
